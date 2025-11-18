@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdictGame - Videojuegos Independientes desde Santa Cruz, Bolivia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d4ff;
+            --secondary: #ff2a6d;
+            --dark: #0a0a1a;
+            --light: #f8f9fa;
+            --accent: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
+            color: var(--light);
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            width: 130px;
+            height: 130px;
+            background: transparent;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.5);
+            animation: pulse 2s infinite;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .company-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            background-color: #0a0a1a;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0% { 
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 0 0 rgba(0, 212, 255, 0.7);
+                border-color: rgba(0, 212, 255, 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 50px rgba(0, 212, 255, 0.8), 0 0 0 10px rgba(0, 212, 255, 0);
+                border-color: rgba(0, 212, 255, 0.8);
+            }
+            100% { 
+                box-shadow: 0 0 30px rgba(0, 212, 255, 0.5), 0 0 0 0 rgba(0, 212, 255, 0);
+                border-color: rgba(0, 212, 255, 0.3);
+            }
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        /* NUEVA SECCIÓN: Redes Sociales */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.2rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            text-decoration: none;
+            border-radius: 50px;
+            border: 1.5px solid rgba(0, 212, 255, 0.3);
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.4);
+            border-color: var(--primary);
+        }
+
+        .social-btn i {
+            font-size: 1.2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .game-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 212, 255, 0.3);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .app-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            z-index: 2;
+        }
+
+        .preview-images {
+            display: flex;
+            height: 100%;
+        }
+
+        .preview-img {
+            flex: 1;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: all 0.3s ease;
+        }
+
+        .preview-img:hover {
+            filter: brightness(1);
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 2.5rem 1.5rem 1.5rem;
+            text-align: center;
+        }
+
+        .game-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .game-description {
+            font-size: 0.95rem;
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .btn-playstore {
+            background: linear-gradient(45deg, #34a853, #0f9d58);
+            color: white;
+        }
+
+        .btn-playstore:hover {
+            background: linear-gradient(45deg, #4285f4, #34a853);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(52, 168, 83, 0.4);
+        }
+
+        .btn-privacy {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-privacy:hover {
+            background: var(--primary);
+            color: var(--dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 212, 255, 0.4);
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem 2rem;
+            margin-top: 4rem;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-top: 1rem;
+        }
+
+        .footer-links a {
+            color: var(--primary);
+            text-decoration: none;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Logo.png" alt="Logo AdictGame" class="company-logo">
+        </div>
+        <h1>AdictGame</h1>
+        <p class="subtitle">Videojuegos Independientes</p>
+        <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Santa Cruz de la Sierra, Bolivia</span>
+        </div>
+        <!-- NUEVAS REDES SOCIALES -->
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100076415617995" class="social-btn" title="Facebook">
+                <i class="fab fa-facebook-f"></i>
+                <span>Facebook</span>
+            </a>
+            <a href="#" class="social-btn" title="TikTok">
+                <i class="fab fa-tiktok"></i>
+                <span>TikTok</span>
+            </a>
+            <a href="mailto:leomarcos1978@hotmail.com" class="social-btn" title="Email">
+                <i class="fas fa-envelope"></i>
+                <span>Contacto</span>
+            </a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="games-grid">
+            <!-- JUEGO 1 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/CyPht7BGDtqL_yb9mDAhpc6VamVRBkEcbdZskFhEsE82b2snAHoyIMSvYw-qT3YNjO85=w240-h480" alt="Icono" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F142%2F210%2Foriginal%2Fabstract-light-blue-minimal-background-with-dynamic-wavy-gradient-line-long-banner-business-template-asbtract-background-website-landing-page-template-for-websites-or-apps-modern-design-vector.jpg&f=1&nofb=1&ipt=03785e1af7f29aabef5914b5650e8d3782bbfcd53cc28ff9bd8b9116cdf1ae29" alt="Preview 1" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Learn with me (verbs)</h3>
+                    <p class="game-description">Aplicación de para apredizaje de los verbos en ingles, mas de 400 verbos, Verbos regulares e Irregulables con 4 tipos de juego.</p>
+                    <div class="btn-group">
+                        <a href="https://play.google.com/store/apps/details?id=org.adictgame.learnwithme" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGO 2 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/uceQaKOkjerwywYZ17x1L1ECoz5W5hpfhkieUib3v6iYXO496yQGYQ4QweBlL7psBQFp=w240-h480" alt="Icono" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F142%2F210%2Foriginal%2Fabstract-light-blue-minimal-background-with-dynamic-wavy-gradient-line-long-banner-business-template-asbtract-background-website-landing-page-template-for-websites-or-apps-modern-design-vector.jpg&f=1&nofb=1&ipt=03785e1af7f29aabef5914b5650e8d3782bbfcd53cc28ff9bd8b9116cdf1ae29" alt="Preview 1" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Semillitas del Saber</h3>
+                    <p class="game-description">Aplicación para contratar los servicios de Apoyo, Nivelación escolar del Centro Semillitas del Saber.</p>
+                    <div class="btn-group">
+                        <a href="https://play.google.com/store/apps/details?id=appinventor.ai_leomarcos1995.Semillitas_del_Saber" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JUEGO 3 -->
+            <div class="game-card">
+                <div class="card-header">
+                    <img src="https://play-lh.googleusercontent.com/vJKaqVcesVeKkTlpFchVK76dQPPvlk1JMAf57BxS8BK-O5Wi0_3kdLz6uzQpa3ECOA=w240-h480" alt="Icono" class="app-icon">
+                    <div class="preview-images">
+                        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.vecteezy.com%2Fsystem%2Fresources%2Fpreviews%2F010%2F142%2F210%2Foriginal%2Fabstract-light-blue-minimal-background-with-dynamic-wavy-gradient-line-long-banner-business-template-asbtract-background-website-landing-page-template-for-websites-or-apps-modern-design-vector.jpg&f=1&nofb=1&ipt=03785e1af7f29aabef5914b5650e8d3782bbfcd53cc28ff9bd8b9116cdf1ae29" alt="Preview 1" class="preview-img">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h3 class="game-title">Godot OS</h3>
+                    <p class="game-description">GodotOS es más un juguete que un proyecto serio. Su objetivo es superar los límites del diseño de la interfaz de usuario en Godot y al mismo tiempo crear un escritorio minimalista, sin distracciones y estéticamente agradable.</p>
+                    <div class="btn-group">
+                        <a href="https://play.google.com/store/apps/details?id=com.adictgame.godotos" class="btn btn-playstore">
+                            <i class="fab fa-google-play"></i> Play Store
+                        </a>
+                        <a href="#" class="btn btn-privacy">
+                            <i class="fas fa-shield-alt"></i> Privacidad
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 AdictGame. Todos los derechos reservados.</p>
+        <div class="footer-links">
+            <a href="mailto:leomarcos1978@hotmail.com">contacto@adictgame.com</a>
+        </div>
+    </footer>
+</body>
+</html>
